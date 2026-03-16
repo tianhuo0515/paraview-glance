@@ -1,8 +1,13 @@
 <div :class="$style.wrapper">
   <v-btn text :disabled="playing || isOnFirstFrame" small @click="firstFrame">
-    <v-icon>
-      mdi-chevron-double-left
-    </v-icon>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-double-left
+        </v-icon>
+      </template>
+      {{ $t('animationControls.firstFrame') }}
+    </v-tooltip>
   </v-btn>
   <v-btn
     text
@@ -10,29 +15,54 @@
     small
     @click="previousFrame"
   >
-    <v-icon>
-      mdi-chevron-left
-    </v-icon>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-left
+        </v-icon>
+      </template>
+      {{ $t('animationControls.previousFrame') }}
+    </v-tooltip>
   </v-btn>
   <v-btn text small @click="play" v-if="!playing" :disabled="isOnLastFrame">
-    <v-icon>
-      mdi-play
-    </v-icon>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-play
+        </v-icon>
+      </template>
+      {{ $t('animationControls.play') }}
+    </v-tooltip>
   </v-btn>
   <v-btn text small @click="pause" v-else>
-    <v-icon>
-      mdi-pause
-    </v-icon>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-pause
+        </v-icon>
+      </template>
+      {{ $t('animationControls.pause') }}
+    </v-tooltip>
   </v-btn>
   <v-btn text :disabled="playing || isOnLastFrame" small @click="nextFrame">
-    <v-icon>
-      mdi-chevron-right
-    </v-icon>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-right
+        </v-icon>
+      </template>
+      {{ $t('animationControls.nextFrame') }}
+    </v-tooltip>
   </v-btn>
   <v-btn text :disabled="playing || isOnLastFrame" small @click="lastFrame">
-    <v-icon>
-      mdi-chevron-double-right
-    </v-icon>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-double-right
+        </v-icon>
+      </template>
+      {{ $t('animationControls.lastFrame') }}
+    </v-tooltip>
   </v-btn>
   <v-select
     class="pv-no-select"

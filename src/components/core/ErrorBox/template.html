@@ -1,10 +1,9 @@
 <v-card>
-  <v-card-title class="title">Application errors</v-card-title>
+  <v-card-title class="title">{{ $t('errorBox.title') }}</v-card-title>
   <v-card-text>
     <p>
-      The following is debug output for errors that have occurred. Please
-      copy and paste the below text and post it to our
-      <a rel="noopener noreferrer" target="_blank" href="https://github.com/Kitware/Glance/issues">issue tracker</a>.
+      {{ $t('errorBox.description') }}
+      <a rel="noopener noreferrer" target="_blank" href="https://github.com/Kitware/Glance/issues">{{ $t('errorBox.issueTracker') }}</a>.
     </p>
     <textarea
       ref="errorTextarea"
@@ -17,10 +16,10 @@
       color="secondary"
       v-on:click="$emit('clear')"
     >
-      Clear Errors
+      {{ $t('errorBox.clear') }}
     </v-btn>
     <v-spacer />
-    <v-btn v-on:click="$emit('close')">Cancel</v-btn>
+    <v-btn v-on:click="$emit('close')">{{ $t('common.cancel') }}</v-btn>
     <v-btn
       v-if="isClipboardEnabled()"
       key="if-clipboard-enabled"
@@ -28,8 +27,8 @@
       :loading="copiedToClipboard"
       v-on:click="copyErrorToClipboard"
     >
-      <span>Copy to clipboard</span>
-      <span slot="loader">Copied!</span>
+      <span>{{ $t('errorBox.copyToClipboard') }}</span>
+      <span slot="loader">{{ $t('errorBox.copied') }}</span>
     </v-btn>
   </v-card-actions>
 </v-card>

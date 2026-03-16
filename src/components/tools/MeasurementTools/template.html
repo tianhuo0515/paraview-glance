@@ -3,7 +3,7 @@
     <v-layout wrap align-center>
       <v-flex xs12>
         <source-select
-          label="Target Dataset"
+          :label="$t('measurementTools.targetDataset')"
           :filterFunc="filterImageData"
           bindToActiveSource
           @input="setTargetDataset"
@@ -15,7 +15,7 @@
       <div :class="$style.heading">
         <v-layout align-center>
           <v-flex xs10>
-            <span class="body-2">Tool List</span>
+            <span class="body-2">{{ $t('measurementTools.toolList') }}</span>
           </v-flex>
           <v-flex xs6>
             <v-btn-toggle
@@ -87,7 +87,7 @@
                       <v-icon>mdi-crosshairs-gps</v-icon>
                     </v-btn>
                   </template>
-                  Jump to slice
+                  {{ $t('measurementTools.jumpToSlice') }}
                 </v-tooltip>
               </div>
               <div :class="$style.action">
@@ -102,14 +102,14 @@
                       <v-layout wrap align-center>
                         <v-flex xs12>
                           <v-text-field
-                            label="Name"
+                            :label="$t('measurementTools.name')"
                             :placeholder="tool.name"
                             :value="toolState.toolName"
                             @input="toolState.setName"
                           />
                         </v-flex>
                         <v-flex xs12>
-                          <div class="body-1">Tool color</div>
+                          <div class="body-1">{{ $t('measurementTools.toolColor') }}</div>
                           <v-divider :class="$style.divider" />
                           <palette-picker
                             class="pt-2"
@@ -120,7 +120,7 @@
                           />
                         </v-flex>
                         <v-flex xs12>
-                          <div class="body-1">Text Size</div>
+                          <div class="body-1">{{ $t('measurementTools.textSize') }}</div>
                           <v-divider :class="$style.divider" />
                         </v-flex>
                         <v-flex xs9>
@@ -167,12 +167,12 @@
           </component>
         </template>
         <template v-else>
-          <div class="pt-2 body-1 teal--text text-center">No measurements yet</div>
+          <div class="pt-2 body-1 teal--text text-center">{{ $t('measurementTools.noMeasurementsYet') }}</div>
         </template>
         <v-btn :disabled="!targetProxy || !girderRest || !girderRest.user" @click="upload">
-          Upload
+          {{ $t('measurementTools.upload') }}
         </v-btn>
-        <span v-show="!girderRest || !girderRest.user" class="body-2">Log in to upload</span>
+        <span v-show="!girderRest || !girderRest.user" class="body-2">{{ $t('measurementTools.logInToUpload') }}</span>
       </div>
     </v-card>
   </v-container>

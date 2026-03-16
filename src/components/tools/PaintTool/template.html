@@ -3,7 +3,7 @@
     <v-layout wrap align-center>
       <v-flex xs12>
         <source-select
-          label="Select a Base Image"
+          :label="$t('paintTool.selectBaseImage')"
           :filterFunc="filterImageData"
           bindToActiveSource
           hideIfOneDataset
@@ -14,7 +14,7 @@
         <v-menu offset-x>
           <template v-slot:activator="{ on }">
             <v-select
-              label="Select a Labelmap"
+              :label="$t('paintTool.selectLabelmap')"
               append-outer-icon="mdi-dots-vertical"
               :items="labelmaps"
               item-text="name"
@@ -29,15 +29,15 @@
           <v-list>
             <template v-if="labelmapSelection">
               <v-list-item @click="editName">
-                <v-list-item-title>Edit Name</v-list-item-title>
+                <v-list-item-title>{{ $t('paintTool.editName') }}</v-list-item-title>
               </v-list-item>
               <v-list-item @click="deleteLabelmap">
-                <v-list-item-title>Delete</v-list-item-title>
+                <v-list-item-title>{{ $t('paintTool.delete') }}</v-list-item-title>
               </v-list-item>
             </template>
             <template v-else>
               <v-list-item>
-                <v-list-item-title>(no labelmap selected)</v-list-item-title>
+                <v-list-item-title>{{ $t('paintTool.noLabelmapSelected') }}</v-list-item-title>
               </v-list-item>
             </template>
           </v-list>
@@ -46,7 +46,7 @@
       <template v-if="editingName">
         <v-flex xs10>
           <v-text-field
-            label="Renaming labelmap"
+            :label="$t('paintTool.renamingLabelmap')"
             v-model="editableLabelmapName"
           />
         </v-flex>
@@ -65,7 +65,7 @@
           :value="enabled"
           @change="$emit('enable', Boolean($event))"
           hide-details
-          label="Paint Mode"
+          label="$t('paintTool.paintMode')"
           :disabled="!canPaint"
           :class="$style.paintSwitch"
         />
@@ -97,7 +97,7 @@
       align-center
     >
       <v-flex xs10 class="mt-1">
-        <label class="v-label theme--light" for="paint-2D-brush-toggle">2D Brush</label>
+        <label class="v-label theme--light" for="paint-2D-brush-toggle">{{ $t('paintTool.brush2D') }}</label>
       </v-flex>
       <v-flex xs2 class="mt-1">
         <v-switch
@@ -109,7 +109,7 @@
       </v-flex>
       <v-flex xs12>
         <v-slider
-          label="Radius"
+          :label="$t('paintTool.radius')"
           min="1"
           :max="brushSizeMax"
           step="1"
@@ -136,7 +136,7 @@
       <v-flex xs12>
         <v-list :class="$style.fullWidth">
           <v-subheader :class="$style.headerRow">
-            <span class="black--text subtitle-1 body-2">Labels</span>
+            <span class="black--text subtitle-1 body-2">{{ $t('paintTool.labels') }}</span>
             <v-spacer />
             <v-btn
               :class="$style.lowercaseText"
@@ -144,7 +144,7 @@
               @click="addLabel"
             >
               <v-icon small color="blue">mdi-plus-circle</v-icon>
-              <span class="pl-2 grey--text text--darken-2">Add Label</span>
+              <span class="pl-2 grey--text text--darken-2">{{ $t('paintTool.addLabel') }}</span>
             </v-btn>
           </v-subheader>
           <v-radio-group
@@ -171,7 +171,7 @@
                         :style="colorToBackgroundCSS(colormapArray, 0)"
                       />
                     </div>
-                    <span class="pl-1">Eraser</span>
+                    <span class="pl-1">{{ $t('paintTool.eraser') }}</span>
                   </template>
                   <template v-else>
                     <pop-up class="flex-grow-0 flex-shrink-1">
@@ -196,7 +196,7 @@
                           />
                           <div :class="$style.opacitySlider">
                             <v-slider
-                              label="Opacity"
+                            :label="$t('paintTool.opacity')"
                               :value="labelData.opacity"
                               @input="setLabelOpacity(labelData.label, arguments[0])"
                               :min="0"
@@ -207,7 +207,7 @@
                         </div>
                       </template>
                     </pop-up>
-                    <span class="pl-1">Label {{ labelData.label }}</span>
+                    <span class="pl-1">{{ $t('paintTool.label') }} {{ labelData.label }}</span>
                   </template>
                 </v-list-item-content>
                 <v-list-item-action>
@@ -230,9 +230,9 @@
         :disabled="!girderRest || !girderRest.user"
         @click="upload()"
       >
-        Upload
+        {{ $t('paintTool.upload') }}
       </v-btn>
-      <span v-show="!girderRest || !girderRest.user" class="body-2">Log in to upload</span>
+      <span v-show="!girderRest || !girderRest.user" class="body-2">{{ $t('paintTool.logInToUpload') }}</span>
     </v-layout>
   </v-container>
 </div>

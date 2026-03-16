@@ -1,7 +1,7 @@
 <v-expansion-panels accordion>
   <v-expansion-panel>
     <v-expansion-panel-header class="subtitle-2">
-      Measurements
+      {{ $t('tools.measurements') }}
     </v-expansion-panel-header>
     <v-expansion-panel-content eager :class="$style.panelContent">
       <measurement-tools
@@ -12,7 +12,7 @@
   </v-expansion-panel>
   <v-expansion-panel>
     <v-expansion-panel-header class="subtitle-2">
-      Painting
+      {{ $t('tools.painting') }}
     </v-expansion-panel-header>
     <v-expansion-panel-content :class="$style.panelContent">
       <paint-tool
@@ -23,7 +23,7 @@
   </v-expansion-panel>
   <v-expansion-panel>
     <v-expansion-panel-header class="subtitle-2">
-      Cropping
+      {{ $t('tools.cropping') }}
     </v-expansion-panel-header>
     <v-expansion-panel-content :class="$style.panelContent">
       <crop-tool
@@ -34,7 +34,7 @@
   </v-expansion-panel>
   <v-expansion-panel>
     <v-expansion-panel-header class="subtitle-2">
-      Median Filter
+      {{ $t('tools.medianFilter') }}
     </v-expansion-panel-header>
     <v-expansion-panel-content :class="$style.panelContent">
       <median-filter />

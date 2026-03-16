@@ -1,7 +1,6 @@
 import { mapGetters, mapState, mapActions, mapMutations } from 'vuex';
 import Mousetrap from 'mousetrap';
 import { VBottomSheet, VDialog } from 'vuetify/lib';
-import macro from '@kitware/vtk.js/macro';
 
 import AboutBox from 'paraview-glance/src/components/core/AboutBox';
 import BrowserIssues from 'paraview-glance/src/components/core/BrowserIssues';
@@ -101,6 +100,8 @@ export default {
     },
   },
   created() {
+    // 直接进入应用界面，跳过登录页
+    this.showApp();
     this.internalControlsDrawer = !this.smallScreen;
   },
   mounted() {
@@ -118,17 +119,17 @@ export default {
       })
     );
 
-    // listen for errors
-    window.addEventListener('error', this.recordError);
+    // 禁用错误监听
+    // window.addEventListener('error', this.recordError);
 
-    // listen for vtkErrorMacro
-    macro.setLoggerFunction('error', (...args) => {
-      this.recordError(args.join(' '));
-      window.console.error(...args);
-    });
+    // 禁用 vtkErrorMacro 监听
+    // macro.setLoggerFunction('error', (...args) => {
+    //   this.recordError(args.join(' '));
+    //   window.console.error(...args);
+    // });
   },
   beforeDestroy() {
-    window.removeEventListener('error', this.recordError);
+    // window.removeEventListener('error', this.recordError);
     shortcuts.forEach(({ key }) => Mousetrap.unbind(key));
   },
   methods: {

@@ -3,13 +3,13 @@
 >
   <v-card flat :class="$style.block">
     <v-card-title :class="$style.blockTitle">
-      <span class="body-2">Window/Level</span>
+      <span class="body-2">{{ $t('sliceControl.windowLevel') }}</span>
     </v-card-title>
     <v-card-text :class="$style.blockContent">
       <v-container fluid grid-list-sm class="pa-0">
         <v-layout row wrap align-center>
           <v-flex xs3>
-            <label :class="$style.smallLabel">Window</label>
+            <label :class="$style.smallLabel">{{ $t('sliceControl.window') }}</label>
           </v-flex>
           <v-flex xs6>
             <v-slider
@@ -34,7 +34,7 @@
             />
           </v-flex>
           <v-flex xs3>
-            <label :class="$style.smallLabel">Level</label>
+            <label :class="$style.smallLabel">{{ $t('sliceControl.level') }}</label>
           </v-flex>
           <v-flex xs6>
             <v-slider
@@ -65,7 +65,7 @@
 
   <v-card flat :class="$style.block">
     <v-card-title flat :class="$style.blockTitle">
-      <span class="body-2">Slices</span>
+      <span class="body-2">{{ $t('sliceControl.slices') }}</span>
     </v-card-title>
     <v-card-text :class="$style.blockContent">
       <v-container fluid grid-list-sm class="pa-0">
@@ -187,7 +187,7 @@
 
   <v-card flat :class="$style.block">
     <v-card-title :class="$style.blockTitle">
-      <span class="body-2">Opacity</span>
+      <span class="body-2">{{ $t('sliceControl.opacity') }}</span>
     </v-card-title>
     <v-card-text :class="$style.blockContent">
       <v-container fluid grid-list-sm class="pa-0">

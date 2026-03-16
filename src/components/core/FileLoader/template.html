@@ -12,7 +12,7 @@
         <v-card-text>
           <v-container>
             <v-tabs v-model="active_tab">
-              <v-tab>Local</v-tab>
+              <v-tab>{{ $t('fileLoader.local') }}</v-tab>
               <v-tab v-if="girderRest">Girder</v-tab>
               <v-tab-item transition="fade-transition">
                 <drag-and-drop
@@ -29,9 +29,9 @@
                         [$style.dropTarget]: dragHover,
                         }"
                     >
-                      <v-btn>browse</v-btn>
+                      <v-btn>{{ $t('fileLoader.browse') }}</v-btn>
                       <span class="ml-2">
-                        or drop your files here
+                        {{ $t('fileLoader.orDropFiles') }}
                       </span>
                     </v-row>
                   </template>
@@ -74,13 +74,13 @@
                         <v-col cols="8">{{ fileInfo.name }}</v-col>
                         <v-col cols="4" class="text--secondary pr-3 text-right">
                           <span v-if="fileInfo.state === 'error'">
-                            Click to see error
+                            {{ $t('fileLoader.clickToSeeError') }}
                           </span>
                           <span v-else-if="fileInfo.ext === 'raw'">
-                            Click to edit raw file info
+                            {{ $t('fileLoader.clickToEditRawFileInfo') }}
                           </span>
                           <span v-else-if="fileInfo.ext === 'glance'">
-                            State file will be loaded first
+                            {{ $t('fileLoader.stateFileWillBeLoadedFirst') }}
                           </span>
                         </v-col>
                       </v-row>
@@ -104,20 +104,20 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <span v-if="anyErrors" class="red--text mr-3">Only checked files will be loaded.</span>
+          <span v-if="anyErrors" class="red--text mr-3">{{ $t('fileLoader.onlyCheckedFilesWillBeLoaded') }}</span>
           <v-btn
             text
             :disabled="loading"
             @click="close"
           >
-            Cancel
+            {{ $t('fileLoader.cancel') }}
           </v-btn>
           <v-btn
             color="primary"
             :disabled="loading || pendingFiles || !hasReadyFiles"
             @click="loadFiles"
           >
-            {{ loading ? 'Loading...' : 'Load' }}
+            {{ loading ? $t('common.loading') : $t('fileLoader.load') }}
           </v-btn>
         </v-card-actions>
       </v-card>

@@ -4,9 +4,9 @@
   grow
   :class="$style.tabsContainer"
 >
-  <v-tab>Datasets</v-tab>
-  <v-tab>Tools</v-tab>
-  <v-tab>Global</v-tab>
+  <v-tab>{{ $t('controlsDrawer.datasets') }}</v-tab>
+  <v-tab>{{ $t('controlsDrawer.tools') }}</v-tab>
+  <v-tab>{{ $t('controlsDrawer.global') }}</v-tab>
   <v-tabs-items
     v-model="activeTab"
     touchless

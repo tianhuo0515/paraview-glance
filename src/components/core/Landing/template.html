@@ -8,19 +8,18 @@
         >
           <v-card flat dark color="transparent">
             <v-card-title class="display-1 text-center pv-break-word">
-              Visualize your data with Kitware Glance
+              {{ $t('landing.title') }}
             </v-card-title>
             <v-card-text>
-              A general purpose standalone web application by
+              {{ $t('landing.description') }}
               <a
                 target="_blank"
                 class="indigo--text text--lighten-3"
                 href="https://www.kitware.com/"
                 rel="noopener noreferrer"
-              >Kitware, Inc.</a>
-              that can be used to visualize many data types.
-              It is also a great framework for building custom
-              viewers on the web which can involve remote services.
+              >{{ $t('landing.kitware') }}</a>
+              {{ $t('landing.thatCan') }}
+              {{ $t('landing.itIsAlso') }}
             </v-card-text>
           </v-card>
         </v-flex>
@@ -46,12 +45,12 @@
                     raised="false"
                     @click.stop="$emit('open')"
                   >
-                    <span v-if="dragHover" class="text-uppercase mr-2">drop your file</span>
-                    <span v-else class="text-uppercase mr-2">open a file</span>
+                    <span v-if="dragHover" class="text-uppercase mr-2">{{ $t('landing.dropYourFile') }}</span>
+                    <span v-else class="text-uppercase mr-2">{{ $t('landing.openAFile') }}</span>
                     <v-icon>mdi-folder-outline</v-icon>
                   </v-btn>
                   <div class="pv-no-select mt-2">
-                    or drop one anywhere in this box to begin.
+                    {{ $t('landing.orDropOne') }}
                   </div>
                 </div>
               </div>
@@ -64,7 +63,7 @@
   <v-container class="mt-4 pv-no-select" grid-list-lg>
     <v-layout row wrap>
       <v-flex xs12>
-        <span class="title">Sample Data</span>
+        <span class="title">{{ $t('landing.sampleData') }}</span>
       </v-flex>
       <v-flex
         v-for="(sample, i) in samples"

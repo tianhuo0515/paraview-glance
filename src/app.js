@@ -28,6 +28,7 @@ import createStore from 'paraview-glance/src/store';
 import { ProxyManagerVuePlugin } from 'paraview-glance/src/plugins/proxyManagerPlugins';
 import Settings from 'paraview-glance/src/settings';
 import ToolSvgPortalPlugin from 'paraview-glance/src/plugins/toolSvgPortal';
+import i18n from './i18n';
 
 // Expose IO API to Glance global object
 export const {
@@ -78,6 +79,7 @@ export function createViewer(container, proxyConfig = null) {
     // https://github.com/girder/girder_web_components/blob/master/README.md
     vuetify: girderVuetify,
     proxyManager,
+    i18n,
     template: '<App />',
   });
 

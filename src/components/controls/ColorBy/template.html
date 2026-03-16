@@ -4,7 +4,7 @@
       <v-layout row wrap align-center>
         <template v-if="available === 'geometry'">
           <v-flex xs3>
-            <span class="body-2">Color By:</span>
+            <span class="body-2">{{ $t('colorBy.colorBy') }}</span>
           </v-flex>
           <v-flex xs9>
             <v-select
@@ -53,7 +53,7 @@
           <v-flex xs5 class="pb-4" :class="$style.negativeTopSpacing">
             <v-text-field
               @change="$proxyManager.renderAllViews()"
-              label="Min"
+              :label="$t('colorBy.min')"
               step="any"
               :disabled="available !== 'geometry'"
               :class="$style.negativeTopSpacing"
@@ -79,14 +79,14 @@
                   <v-icon>mdi-arrow-expand-horizontal</v-icon>
                 </v-btn>
               </template>
-              Reset range
+              {{ $t('colorBy.resetRange') }}
             </v-tooltip>
             <v-spacer v-else />
           </v-flex>
           <v-flex xs5 class="pb-4" :class="$style.negativeTopSpacing">
             <v-text-field
               @change="$proxyManager.renderAllViews()"
-              label="Max"
+              :label="$t('colorBy.max')"
               step="any"
               :disabled="available !== 'geometry'"
               :class="$style.negativeTopSpacing"
@@ -141,7 +141,7 @@
             <v-checkbox
               v-model="colorToSlices"
               hide-details
-              label="Apply color to slices"
+              :label="$t('colorBy.applyColorToSlices')"
               :class="$style.slimInput"
               @change="applyColorToSlices"
             />
@@ -150,7 +150,7 @@
             <v-checkbox
               v-model="opacityToSlices"
               hide-details
-              label="Apply opacity to slices"
+              :label="$t('colorBy.applyOpacityToSlices')"
               :class="$style.slimInput"
               @change="applyOpacityToSlices"
             />
@@ -168,7 +168,7 @@
               </v-icon>
             </v-flex>
             <v-flex xs10>
-              <span class="body-2">Interpolate scalar before mapping</span>
+              <span class="body-2">{{ $t('colorBy.interpolateScalarBeforeMapping') }}</span>
             </v-flex>
           </v-layout>
         </v-flex>

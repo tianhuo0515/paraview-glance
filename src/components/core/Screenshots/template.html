@@ -4,7 +4,7 @@
     flat
     class="flex-grow-0"
   >
-    <v-toolbar-title>Screenshots</v-toolbar-title>
+    <v-toolbar-title>{{ $t('screenshots.title') }}</v-toolbar-title>
     <v-spacer />
     <v-btn
       icon
@@ -18,13 +18,13 @@
     :class="$style.emptyState"
   >
     <v-icon large>mdi-image-multiple</v-icon>
-    <span class="subtitle-1 grey--text text--darken-1">No screenshots yet!</span>
+    <span class="subtitle-1 grey--text text--darken-1">{{ $t('screenshots.noScreenshotsYet') }}</span>
     <v-btn
       class="mt-4"
       :disabled="!activeView"
       v-on:click="takeScreenshot"
     >
-      Capture Active View
+      {{ $t('screenshots.captureActiveView') }}
     </v-btn>
   </div>
   <v-list

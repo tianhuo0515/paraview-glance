@@ -8,7 +8,7 @@
           <v-select
             dense
             flat
-            label="Type"
+            :label="$t('representation.type')"
             v-model="representation"
             :items="domains.representation.items"
           />
@@ -18,13 +18,13 @@
   </v-card>
   <v-card flat :class="$style.block" v-if="domains.opacity && domains.pointSize">
     <v-card-title flat :class="$style.blockTitle">
-      <span class="body-2">Mesh</span>
+      <span class="body-2">{{ $t('representation.mesh') }}</span>
     </v-card-title>
     <v-card-text :class="$style.blockContent">
       <v-container fluid grid-list-xs class="pa-0">
         <v-layout row wrap align-center>
           <v-flex xs3>
-            <label :class="$style.smallLabel">Point Size</label>
+            <label :class="$style.smallLabel">{{ $t('representation.pointSize') }}</label>
           </v-flex>
           <v-flex xs6>
             <v-slider
@@ -49,7 +49,7 @@
             />
           </v-flex>
           <v-flex xs3>
-            <label :class="$style.smallLabel">Opacity</label>
+            <label :class="$style.smallLabel">{{ $t('datasets.opacity') }}</label>
           </v-flex>
           <v-flex xs6>
             <v-slider
@@ -80,13 +80,13 @@
   </v-card>
   <v-card flat :class="$style.block" v-if="domains.sampleDistance && domains.edgeGradient">
     <v-card-title flat :class="$style.blockTitle">
-      <span class="body-2">Shadow &amp; Edge</span>
+      <span class="body-2">{{ $t('representation.shadowEdge') }}</span>
     </v-card-title>
     <v-card-text :class="$style.blockContent">
       <v-container fluid grid-list-xs class="pa-0">
         <v-layout row wrap align-center>
           <v-flex xs3>
-            <label :class="$style.smallLabel">Sample Distance</label>
+            <label :class="$style.smallLabel">{{ $t('representation.sampleDistance') }}</label>
           </v-flex>
           <v-flex xs6>
             <v-slider
@@ -111,7 +111,7 @@
             />
           </v-flex>
           <v-flex xs3>
-            <label :class="$style.smallLabel">Edge Gradient</label>
+            <label :class="$style.smallLabel">{{ $t('representation.edgeGradient') }}</label>
           </v-flex>
           <v-flex xs6>
             <v-slider

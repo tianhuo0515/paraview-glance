@@ -3,7 +3,7 @@
     <v-layout wrap align-center>
       <v-flex xs12>
         <source-select
-          label="Target volume"
+          :label="$t('medianFilter.targetVolume')"
           :filterFunc="filterImages"
           bindToActiveSource
           :disabled="running"
@@ -14,7 +14,7 @@
         <v-menu offset-x>
           <template v-slot:activator="{ on }">
             <v-select
-              label="Select/create an output image"
+              :label="$t('medianFilter.selectCreateOutputImage')"
               append-outer-icon="mdi-dots-vertical"
               :items="imageList"
               item-text="name"
@@ -29,15 +29,15 @@
           <v-list>
             <template v-if="outputImageSelection">
               <v-list-item @click="editOutputImageName">
-                <v-list-item-title>Edit Name</v-list-item-title>
+                <v-list-item-title>{{ $t('medianFilter.editName') }}</v-list-item-title>
               </v-list-item>
               <v-list-item @click="deleteOutputImage">
-                <v-list-item-title>Delete</v-list-item-title>
+                <v-list-item-title>{{ $t('medianFilter.delete') }}</v-list-item-title>
               </v-list-item>
             </template>
             <template v-else>
               <v-list-item>
-                <v-list-item-title>(no image selected)</v-list-item-title>
+                <v-list-item-title>{{ $t('medianFilter.noImageSelected') }}</v-list-item-title>
               </v-list-item>
             </template>
           </v-list>
@@ -46,7 +46,7 @@
       <template v-if="editingOutputName">
         <v-flex xs10>
           <v-text-field
-            label="Renaming image"
+            :label="$t('medianFilter.renamingImage')"
             v-model="editableOutputImageName"
             @keydown.13="editingOutputName = false"
           />
@@ -64,7 +64,7 @@
       <v-flex xs10>
         <v-slider
           v-model="blurRadius"
-          label="Radius"
+          :label="$t('medianFilter.radius')"
           min="1"
           max="20"
           step="1"
@@ -96,9 +96,9 @@
               size="24"
               width="3"
             />
-            <span class="ml-2">Running...</span>
+            <span class="ml-2">{{ $t('medianFilter.running') }}</span>
           </template>
-          Blur Image
+          {{ $t('medianFilter.blurImage') }}
         </v-btn>
       </v-flex>
     </v-layout>
@@ -124,7 +124,7 @@
       :timeout="6000"
     >
       {{ snackbar.msg }}
-      <v-btn dark text @click="snackbar.show = false">close</v-btn>
+      <v-btn dark text @click="snackbar.show = false">{{ $t('medianFilter.close') }}</v-btn>
     </v-snackbar>
   </portal>
 </div>

@@ -31,6 +31,7 @@
               href="#"
               v-on="on"
               v-on:click.prevent="toggleLanding"
+              style="display: none;"
             >
               <svg-icon
                 :icon="`glance-logo${smallScreen ? '-mark' : ''}`"
@@ -39,12 +40,13 @@
               />
             </a>
           </template>
-          <span v-if="landingVisible" key="if-landingVisible">Go to app</span>
-          <span v-else key="if-landingVisible">Back to landing page</span>
+          <span v-if="landingVisible" key="if-landingVisible">{{ $t('app.goToApp') }}</span>
+          <span v-else key="if-landingVisible">{{ $t('app.backToLanding') }}</span>
         </v-tooltip>
         <v-spacer />
         <v-toolbar-items>
-          <v-btn
+          <!-- 隐藏错误按钮 -->
+          <!-- <v-btn
             v-if="errors.length"
             key="if-has-errors"
             text
@@ -54,8 +56,8 @@
             <v-icon left>mdi-alert-circle</v-icon>
             <span>{{ errors.length }}</span>
             &nbsp;
-            <span v-show="!smallScreen">error(s)</span>
-          </v-btn>
+            <span v-show="!smallScreen">{{ $t('app.errors') }}</span>
+          </v-btn> -->
         </v-toolbar-items>
         <collapsible-toolbar
           :collapse="$vuetify.breakpoint.xsOnly"
@@ -67,15 +69,16 @@
               :state="state"
             >
               <v-icon left>mdi-folder</v-icon>
-              <span v-show="state !== 'dense'">Open</span>
+              <span v-show="state !== 'dense'">{{ $t('app.open') }}</span>
             </collapsible-toolbar-item>
             <collapsible-toolbar-item
               v-show="!landingVisible"
               v-on:click="saveState()"
               :state="state"
+              style="display: none;"
             >
               <v-icon left>mdi-cloud-download</v-icon>
-              <span v-show="state !== 'dense'">Save state</span>
+              <span v-show="state !== 'dense'">{{ $t('app.saveState') }}</span>
             </collapsible-toolbar-item>
             <collapsible-toolbar-item
               v-show="!landingVisible"
@@ -84,15 +87,16 @@
             >
               <v-icon left>mdi-image-multiple</v-icon>
               <span v-show="state !== 'dense'">
-                Screenshots ({{ screenshotCount }})
+                {{ $t('app.screenshots') }} ({{ screenshotCount }})
               </span>
             </collapsible-toolbar-item>
             <collapsible-toolbar-item
               v-on:click="aboutDialog = true"
               :state="state"
+              style="display: none;"
             >
               <v-icon left>mdi-information</v-icon>
-              <span v-show="state !== 'dense'">About</span>
+              <span v-show="state !== 'dense'">{{ $t('app.about') }}</span>
             </collapsible-toolbar-item>
           </template>
         </collapsible-toolbar>
@@ -101,17 +105,10 @@
       <v-content
         :id="$style.appContent"
         :style="{
-          position: landingVisible ? 'initial' : 'fixed',
+          position: 'fixed',
         }"
       >
-        <landing
-          v-if="landingVisible"
-          key="if-landing"
-          v-on:open="showFileUpload"
-          v-on:open-urls="autoLoadRemotes"
-          v-on:open-files="openFileList"
-        />
-        <layout-view v-else key="if-landing" />
+        <layout-view key="if-landing" />
       </v-content>
 
       <v-navigation-drawer
@@ -140,9 +137,9 @@
           <v-card-title
             class="justify-center text-center title black--text pv-break-word"
           >
-            Loading {{ autoloadLabel }}&nbsp;
+            {{ $t('app.loading') }} {{ autoloadLabel }}&nbsp;
             <span v-if="fileLoadingProgress === 1">
-              (reading...)
+              ({{ $t('app.reading') }})
             </span>
             <span v-else-if="fileLoadingProgress !== Infinity">
               ({{ Math.round(fileLoadingProgress * 100) }}%)
@@ -165,7 +162,7 @@
         :class="{ [$style.overlay]: true, [$style.overlayVisible]: dragHover }"
       >
         <div :class="$style.overlayText">
-          <div class="display-3">Drop files here</div>
+          <div class="display-3">{{ $t('app.dropFilesHere') }}</div>
           <v-icon size="4.75rem">mdi-publish</v-icon>
         </div>
       </div>
@@ -173,17 +170,17 @@
       <!-- browser issues -->
       <browser-issues />
 
-      <!-- about dialog -->
-      <component
+      <!-- 隐藏关于对话框 -->
+      <!-- <component
         :is="dialogType"
         v-model="aboutDialog"
         max-width="50%"
       >
         <about-box v-on:close="aboutDialog = false" />
-      </component>
+      </component> -->
 
-      <!-- error dialog-->
-      <component
+      <!-- 隐藏错误对话框 -->
+      <!-- <component
         :is="dialogType"
         v-model="errorDialog"
         max-width="50%"
@@ -193,7 +190,7 @@
           v-on:close="errorDialog = false"
           v-on:clear="errors = []"
         />
-      </component>
+      </component> -->
 
       <v-snackbar
         :value="!!globalSingleNotification"
@@ -204,7 +201,7 @@
         @click="globalSingleNotification = ''"
       >
         {{ globalSingleNotification }}
-        <v-btn text>close</v-btn>
+        <v-btn text>{{ $t('app.close') }}</v-btn>
       </v-snackbar>
 
       <!-- portal mount point -->
