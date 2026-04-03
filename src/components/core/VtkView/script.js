@@ -464,7 +464,7 @@ export default {
 
       const colorByValue = geoRep.getColorBy();
       if (!colorByValue || !colorByValue[0]) {
-        // Solid color mode - hide scalar bar
+        // Original model mode - hide scalar bar
         this.scalarBarActor.setVisibility(false);
         return;
       }

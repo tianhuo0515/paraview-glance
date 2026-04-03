@@ -55,7 +55,7 @@ function convertArrays(arrays, addSolidColor = false) {
   if (addSolidColor) {
     fields.push({
       key: 'solid',
-      name: '单一颜色',
+      name: '原始模型',
       location: null,
       numComponents: 0,
       components: [],

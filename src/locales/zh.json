@@ -205,7 +205,7 @@
   "colorBy": {
     "colorBy": "变量",
     "component": "分量",
-    "solidColor": "单一颜色",
+    "solidColor": "原始模型",
     "min": "最小值",
     "max": "最大值",
     "resetRange": "重置范围",
