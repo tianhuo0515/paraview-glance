@@ -1,0 +1,72 @@
+<div v-if="source">
+  <v-card
+    v-for="axisData in axes"
+    :key="axisData.axis"
+    flat
+    :class="$style.block"
+  >
+    <v-card-title flat :class="$style.blockTitle">
+      <v-layout row wrap align-center>
+        <v-flex xs6>
+          <span class="body-2">{{ axisData.axis }} 轴剖切</span>
+        </v-flex>
+        <v-flex xs6 class="text-xs-right">
+          <v-switch
+            hide-details
+            :class="$style.switch"
+            :input-value="axisData.enabled"
+            @change="toggleAxis(axisData.axis)"
+          />
+        </v-flex>
+      </v-layout>
+    </v-card-title>
+    <v-card-text v-if="axisData.enabled" :class="$style.blockContent">
+      <v-container fluid grid-list-xs class="pa-0">
+        <v-layout row wrap align-center>
+          <v-flex xs6>
+            <v-slider
+              :class="$style.slimInput"
+              hide-details
+              always-dirty
+              :value="axisData.value"
+              :min="0"
+              :max="1"
+              :step="0.001"
+              @input="onSliderChange(axisData.axis, $event)"
+            />
+          </v-flex>
+          <v-flex xs3>
+            <v-text-field
+              :class="$style.slimInput"
+              hide-details
+              type="number"
+              :value="axisData.value.toFixed(3)"
+              @input="onInputChange(axisData.axis, $event)"
+            />
+          </v-flex>
+          <v-flex xs3>
+            <v-btn
+              icon
+              small
+              flat
+              title="反转法线"
+              :class="$style.button"
+              @click="flipAxis(axisData.axis)"
+            >
+              <v-icon
+                small
+                :style="
+                  axisData.flipped
+                    ? { color: 'primary' }
+                    : { color: 'rgba(0,0,0,0.25)' }
+                "
+              >
+                mdi-swap-vertical
+              </v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
+</div>

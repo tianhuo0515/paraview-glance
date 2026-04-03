@@ -1,0 +1,235 @@
+{
+  "app": {
+    "title": "Kitware Glance",
+    "goToApp": "Go to app",
+    "backToLanding": "Back to landing page",
+    "errors": "error(s)",
+    "open": "Open",
+    "saveState": "Save state",
+    "screenshots": "Screenshots",
+    "about": "About",
+    "close": "Close",
+    "loading": "Loading",
+    "reading": "reading...",
+    "dropFilesHere": "Drop files here",
+    "publish": "Publish"
+  },
+  "landing": {
+    "title": "Visualize your data with Kitware Glance",
+    "description": "A general purpose standalone web application by",
+    "thatCan": "that can be used to visualize many data types.",
+    "itIsAlso": "It is also a great framework for building custom viewers on the web which can involve remote services.",
+    "kitware": "Kitware, Inc.",
+    "sampleData": "Sample Data",
+    "dropYourFile": "drop your file",
+    "openAFile": "open a file",
+    "orDropOne": "or drop one anywhere in this box to begin.",
+    "acknowledgement": "Acknowledgement"
+  },
+  "controlsDrawer": {
+    "datasets": "Datasets",
+    "tools": "Tools",
+    "global": "Global"
+  },
+  "fileLoader": {
+    "title": "Load Files",
+    "local": "Local",
+    "browse": "Browse",
+    "orDropFiles": "or drop your files here",
+    "clickToSeeError": "Click to see error",
+    "clickToEditRawFileInfo": "Click to edit raw file info",
+    "stateFileWillBeLoadedFirst": "State file will be loaded first",
+    "onlyCheckedFilesWillBeLoaded": "Only checked files will be loaded.",
+    "cancel": "Cancel",
+    "load": "Load"
+  },
+  "datasets": {
+    "noDatasets": "No datasets",
+    "delete": "Delete",
+    "uploadToGirder": "Upload To Girder",
+    "activateSource": "Activate source",
+    "visibility": "Visibility",
+    "representation": "Representation",
+    "colorBy": "Color By",
+    "opacity": "Opacity",
+    "volume": "Volume",
+    "surface": "Surface",
+    "wireframe": "Wireframe",
+    "points": "Points",
+    "outline": "Outline",
+    "type": "Type"
+  },
+  "tools": {
+    "crop": "Crop",
+    "clip": "Clip",
+    "slice": "Slice",
+    "measure": "Measure",
+    "resetCamera": "Reset Camera",
+    "measurements": "Measurements",
+    "painting": "Painting",
+    "cropping": "Cropping",
+    "medianFilter": "Median Filter"
+  },
+  "measurementTools": {
+    "targetDataset": "Target Dataset",
+    "toolList": "Tool List",
+    "jumpToSlice": "Jump to slice",
+    "name": "Name",
+    "toolColor": "Tool color",
+    "textSize": "Text Size",
+    "noMeasurementsYet": "No measurements yet",
+    "upload": "Upload",
+    "logInToUpload": "Log in to upload"
+  },
+  "paintTool": {
+    "selectBaseImage": "Select a Base Image",
+    "selectLabelmap": "Select a Labelmap",
+    "editName": "Edit Name",
+    "delete": "Delete",
+    "noLabelmapSelected": "(no labelmap selected)",
+    "renamingLabelmap": "Renaming labelmap",
+    "paintMode": "Paint Mode",
+    "brush2D": "2D Brush",
+    "radius": "Radius",
+    "labels": "Labels",
+    "addLabel": "Add Label",
+    "eraser": "Eraser",
+    "label": "Label",
+    "opacity": "Opacity",
+    "upload": "Upload",
+    "logInToUpload": "Log in to upload"
+  },
+  "cropTool": {
+    "targetVolume": "Target volume",
+    "hide": "Hide",
+    "crop": "Crop",
+    "reset": "Reset"
+  },
+  "medianFilter": {
+    "targetVolume": "Target volume",
+    "selectCreateOutputImage": "Select/create an output image",
+    "editName": "Edit Name",
+    "delete": "Delete",
+    "noImageSelected": "(no image selected)",
+    "renamingImage": "Renaming image",
+    "radius": "Radius",
+    "running": "Running...",
+    "blurImage": "Blur Image",
+    "close": "Close"
+  },
+  "treeView": {
+    "filter": "Filter..."
+  },
+  "animationControls": {
+    "firstFrame": "First frame",
+    "previousFrame": "Previous frame",
+    "play": "Play",
+    "pause": "Pause",
+    "nextFrame": "Next frame",
+    "lastFrame": "Last frame"
+  },
+  "globalSettings": {
+    "title": "Global Settings",
+    "language": "Language",
+    "chinese": "中文",
+    "english": "English",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "animationControls": "Animation controls",
+    "generalSettings": "General Settings",
+    "defaultCollapseDatasets": "Default collapse datasets panels",
+    "measurements": "Measurements",
+    "distanceUnitSymbol": "Distance unit symbol",
+    "symbol": "Symbol",
+    "distanceUnitFactor": "Distance unit factor",
+    "factor": "Factor",
+    "background": "Background",
+    "interactionStyle": "Interaction Style",
+    "movementSpeed": "Movement Speed",
+    "overlay": "Overlay",
+    "textOpacity": "Text opacity",
+    "orientationAxis": "Orientation Axis",
+    "type": "Type",
+    "preset": "Preset",
+    "virtualReality": "Virtual Reality",
+    "physicalScale": "Physical scale",
+    "lodSettings": "LOD Settings",
+    "maxTextureLodSize": "Max Texture LOD Size"
+  },
+  "about": {
+    "title": "About Glance",
+    "version": "Version",
+    "description": "Glance is a web-based tool for scientific and medical data visualization.",
+    "poweredBy": "Powered by",
+    "close": "Close"
+  },
+  "errorBox": {
+    "title": "Errors",
+    "description": "The following is debug output for errors that have occurred. Please copy and paste the below text and post it to our",
+    "issueTracker": "issue tracker",
+    "clear": "Clear Errors",
+    "copyToClipboard": "Copy to clipboard",
+    "copied": "Copied!",
+    "close": "Close"
+  },
+  "screenshots": {
+    "title": "Screenshots",
+    "noScreenshotsYet": "No screenshots yet!",
+    "captureActiveView": "Capture Active View",
+    "takeScreenshot": "Take Screenshot",
+    "downloadAll": "Download All",
+    "deleteAll": "Delete All",
+    "noScreenshots": "No screenshots"
+  },
+  "stateFileGenerator": {
+    "title": "State File Generator",
+    "generate": "Generate",
+    "download": "Download"
+  },
+  "sliceControl": {
+    "windowLevel": "Window/Level",
+    "window": "Window",
+    "level": "Level",
+    "slices": "Slices",
+    "opacity": "Opacity"
+  },
+  "representation": {
+    "type": "Type",
+    "mesh": "Mesh",
+    "pointSize": "Point Size",
+    "shadowEdge": "Shadow & Edge",
+    "sampleDistance": "Sample Distance",
+    "edgeGradient": "Edge Gradient"
+  },
+  "colorBy": {
+    "colorBy": "Variable",
+    "component": "Component",
+    "solidColor": "Solid color",
+    "min": "Min",
+    "max": "Max",
+    "resetRange": "Reset range",
+    "interpolateScalarBeforeMapping": "Interpolate scalars before mapping",
+    "applyColorToSlices": "Apply color to slices",
+    "applyOpacityToSlices": "Apply opacity to slices"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "notification": {
+    "fileLoaded": "File loaded",
+    "fileLoadError": "Failed to load file",
+    "screenshotTaken": "Screenshot taken",
+    "stateSaved": "State saved"
+  }
+}

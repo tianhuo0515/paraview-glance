@@ -1,0 +1,259 @@
+<v-container :class="$style.container">
+  <v-card flat :class="$style.card" v-if="isAnimated">
+    <div :class="$style.heading">
+      <span class="subtitle-2">{{ $t('globalSettings.animationControls') }}</span>
+    </div>
+    <v-divider class="mb-4" />
+    <animationControls />
+  </v-card>
+
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <span class="subtitle-2">{{ $t('globalSettings.generalSettings') }}</span>
+    </div>
+    <v-divider class="mb-4" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1">
+        <v-flex xs10>
+          <span class="body-2">{{ $t('globalSettings.defaultCollapseDatasets') }}</span>
+        </v-flex>
+        <v-flex xs2>
+          <v-switch
+            v-model="collapseDatasetPanelsModel"
+            :class="$style.slimInput"
+            hide-details
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+
+  <!-- measurement unit selection -->
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <span class="subtitle-2">{{ $t('globalSettings.measurements') }}</span>
+    </div>
+    <v-divider class="mb-4" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1">
+        <v-flex xs9>
+          <span class="body-2">{{ $t('globalSettings.distanceUnitSymbol') }}</span>
+        </v-flex>
+        <v-flex xs3>
+          <v-text-field
+            :class="$style.slimInput"
+            :hint="$t('globalSettings.symbol')"
+            hide-details
+            v-model="distanceUnitSymbolModel"
+            required
+          />
+        </v-flex>
+        <v-flex xs9>
+          <span class="body-2">{{ $t('globalSettings.distanceUnitFactor') }}</span>
+        </v-flex>
+        <v-flex xs3>
+          <v-text-field
+            :class="$style.slimInput"
+            type="number"
+            :hint="$t('globalSettings.factor')"
+            hide-details
+            v-model="distanceUnitFactorModel"
+            :min="0"
+            :step="0.1"
+            required
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <span class="subtitle-2">{{ $t('globalSettings.background') }}</span>
+    </div>
+    <v-divider class="mb-4" />
+    <palette-picker
+      :palette="palette"
+      :size="24"
+      v-model="backgroundColorModel"
+    />
+  </v-card>
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <span class="subtitle-2">{{ $t('globalSettings.interactionStyle') }}</span>
+    </div>
+    <v-divider :class="$style.divider" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1">
+        <v-flex xs6>
+          <span class="body-2">3D</span>
+        </v-flex>
+        <v-flex xs6>
+          <v-select
+            class="pv-no-select"
+            :class="$style.slimInput"
+            dense
+            flat
+            hide-details
+            v-model="interactionStyle3DModel"
+            :items="interactionStyles3D"
+          />
+        </v-flex>
+        <v-flex xs6>
+          <span class="body-2" v-if="firstPersonInteraction">
+            {{ $t('globalSettings.movementSpeed') }}
+          </span>
+        </v-flex>
+        <v-flex xs6>
+          <v-text-field
+            :class="$style.slimInput"
+            hide-details
+            type="number"
+            v-model="firstPersonMovementSpeedModel"
+            v-if="firstPersonInteraction"
+            :min="0"
+            :step="0.1"
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <span class="subtitle-2">{{ $t('globalSettings.overlay') }}</span>
+    </div>
+    <v-divider :class="$style.divider" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1">
+        <v-flex xs6>
+          <span class="body-2">{{ $t('globalSettings.textOpacity') }}</span>
+        </v-flex>
+        <v-flex xs6>
+          <v-slider
+            :class="$style.slimInput"
+            hide-details
+            v-model="annotationOpacityModel"
+            :min="0"
+            :max="1"
+            :step="0.01"
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <v-container grid-list-xs class="pa-0">
+        <v-layout row align-center>
+          <v-flex xs10>
+            <span class="subtitle-2">{{ $t('globalSettings.orientationAxis') }}</span>
+          </v-flex>
+          <v-flex xs2>
+            <v-switch
+              v-model="orientationAxisModel"
+              :class="$style.slimInput"
+              hide-details
+            />
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
+    <v-divider :class="$style.divider" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1">
+        <v-flex xs3>
+          <span class="body-2">{{ $t('globalSettings.type') }}</span>
+        </v-flex>
+        <v-flex xs9>
+          <v-select
+            class="pv-no-select"
+            :class="$style.slimInput"
+            dense
+            flat
+            hide-details
+            :disabled="!orientationAxis"
+            v-model="axisTypeModel"
+            :items="axisTypes"
+          />
+        </v-flex>
+      </v-layout>
+      <v-layout row align-center class="pt-1">
+        <v-flex xs3>
+          <span class="body-2">{{ $t('globalSettings.preset') }}</span>
+        </v-flex>
+        <v-flex xs9>
+          <v-select
+            class="pv-no-select"
+            :class="$style.slimInput"
+            dense
+            flat
+            hide-details
+            v-model="orientationPresetModel"
+            :items="orientationPresets"
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+  <gpu-information :width="250" :proxyManager="$proxyManager" />
+  <v-card flat :class="$style.card" v-if="hasVR()">
+    <div :class="$style.heading">
+      <v-container grid-list-xs class="pa-0">
+        <v-layout row align-center>
+          <v-flex xs10>
+            <span class="subtitle-2">{{ $t('globalSettings.virtualReality') }}</span>
+          </v-flex>
+          <v-flex xs2>
+            <v-switch
+              v-model="vrEnabled"
+              :class="$style.slimInput"
+              hide-details
+              v-on:change="toggleVR"
+            />
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
+    <v-divider :class="$style.divider" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1" wrap>
+        <v-flex xs5>
+          <span class="body-2">{{ $t('globalSettings.physicalScale') }}</span>
+        </v-flex>
+        <v-flex xs7>
+          <v-slider
+            :class="$style.slimInput"
+            hide-details
+            v-model="physicalScale"
+            min="0.1"
+            max="10"
+            step="any"
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <span class="subtitle-2">{{ $t('globalSettings.lodSettings') }}</span>
+    </div>
+    <v-divider :class="$style.divider" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1">
+        <v-flex xs7>
+          <span class="body-2">{{ $t('globalSettings.maxTextureLodSize') }}</span>
+        </v-flex>
+        <v-flex xs5>
+          <v-text-field
+            :class="$style.slimInput"
+            hide-details
+            type="number"
+            v-model="maxTextureLODSizeModel"
+            :min="100"
+            suffix="KiB"
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+</v-container>
