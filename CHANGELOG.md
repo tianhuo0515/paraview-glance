@@ -119,7 +119,7 @@
 ### 构建调整
 
 - Node.js 17+ OpenSSL 兼容性修复：build 脚本添加 `set NODE_OPTIONS=--openssl-legacy-provider`
-- 开发服务器端口改为 `8081`，允许所有来源的主机
+- 开发服务器端口改为 `8013`，允许所有来源的主机
 - `build/webpack.dev.config.js`
 - `build/webpack.prod.config.js` - 新增 `CopyPlugin` 复制 `static/redirect-app.html`
 

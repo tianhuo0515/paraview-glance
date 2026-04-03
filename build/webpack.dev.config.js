@@ -63,7 +63,7 @@ module.exports = merge(baseConfig, {
       },
     },
     host: HOST || '0.0.0.0',
-    port: PORT || 8081,
+    port: PORT || 8013,
     allowedHosts: 'all',
     hot: false,
     devMiddleware: {
