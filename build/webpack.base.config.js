@@ -130,7 +130,6 @@ module.exports = {
           to: path.join('itk', 'Pipelines', '[name][ext]'),
         },
         { from: 'static/ParaView.png' },
-        { from: 'static/favicon.png' },
       ],
     }),
     new GenerateSW({
