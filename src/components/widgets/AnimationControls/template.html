@@ -1,0 +1,77 @@
+<div :class="$style.wrapper">
+  <v-btn text :disabled="playing || isOnFirstFrame" small @click="firstFrame">
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-double-left
+        </v-icon>
+      </template>
+      {{ $t('animationControls.firstFrame') }}
+    </v-tooltip>
+  </v-btn>
+  <v-btn
+    text
+    :disabled="playing || isOnFirstFrame"
+    small
+    @click="previousFrame"
+  >
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-left
+        </v-icon>
+      </template>
+      {{ $t('animationControls.previousFrame') }}
+    </v-tooltip>
+  </v-btn>
+  <v-btn text small @click="play" v-if="!playing" :disabled="isOnLastFrame">
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-play
+        </v-icon>
+      </template>
+      {{ $t('animationControls.play') }}
+    </v-tooltip>
+  </v-btn>
+  <v-btn text small @click="pause" v-else>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-pause
+        </v-icon>
+      </template>
+      {{ $t('animationControls.pause') }}
+    </v-tooltip>
+  </v-btn>
+  <v-btn text :disabled="playing || isOnLastFrame" small @click="nextFrame">
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-right
+        </v-icon>
+      </template>
+      {{ $t('animationControls.nextFrame') }}
+    </v-tooltip>
+  </v-btn>
+  <v-btn text :disabled="playing || isOnLastFrame" small @click="lastFrame">
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-icon v-on="on">
+          mdi-chevron-double-right
+        </v-icon>
+      </template>
+      {{ $t('animationControls.lastFrame') }}
+    </v-tooltip>
+  </v-btn>
+  <v-select
+    class="pv-no-select"
+    :disabled="playing"
+    :items="frames"
+    :value="currentFrame"
+    dense
+    flat
+    hide-details
+    @change="setCurrentFrame"
+  />
+</div>

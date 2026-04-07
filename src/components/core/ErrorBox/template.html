@@ -1,0 +1,34 @@
+<v-card>
+  <v-card-title class="title">{{ $t('errorBox.title') }}</v-card-title>
+  <v-card-text>
+    <p>
+      {{ $t('errorBox.description') }}
+      <a rel="noopener noreferrer" target="_blank" href="https://github.com/Kitware/Glance/issues">{{ $t('errorBox.issueTracker') }}</a>.
+    </p>
+    <textarea
+      ref="errorTextarea"
+      readonly
+      :class="$style.errorTextarea"
+    >{{ readableErrors }}</textarea>
+  </v-card-text>
+  <v-card-actions>
+    <v-btn
+      color="secondary"
+      v-on:click="$emit('clear')"
+    >
+      {{ $t('errorBox.clear') }}
+    </v-btn>
+    <v-spacer />
+    <v-btn v-on:click="$emit('close')">{{ $t('common.cancel') }}</v-btn>
+    <v-btn
+      v-if="isClipboardEnabled()"
+      key="if-clipboard-enabled"
+      color="info"
+      :loading="copiedToClipboard"
+      v-on:click="copyErrorToClipboard"
+    >
+      <span>{{ $t('errorBox.copyToClipboard') }}</span>
+      <span slot="loader">{{ $t('errorBox.copied') }}</span>
+    </v-btn>
+  </v-card-actions>
+</v-card>
